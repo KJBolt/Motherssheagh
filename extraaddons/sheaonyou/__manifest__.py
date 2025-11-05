@@ -6,13 +6,21 @@
     'summary': 'Customization for Sheaonyou',
     'author': 'GeoIworks',
     'images': [],
-    'depends': [],
-    'data': [],
+    'depends': ['account', 'website', 'stock'],
+    'data': [
+        'views/home.xml',
+        'views/contact.xml',
+        'views/about.xml',
+        'views/cart.xml',
+        'views/shop.xml',
+        'views/shop_details.xml',
+    ],
+    'assets': {
+        'web.assets_frontend': [
+            'sheaonyou/static/src/img/*',
+        ]
+    },
     'installable': True,
     'application': True,
-    'assets': {
-        'web.assets_frontend': [],
-        'web.assets_backend': [],
-    },
     'license': 'LGPL-3',
 }

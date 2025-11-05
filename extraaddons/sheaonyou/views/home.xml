@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="home" name="Home Page">
+        <t t-call="website.layout">
+            <t t-set="head">
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+                <link href="https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+                <style>
+                    body, h1, h2, h3, h4, h5, h6, p, a, button, .btn {
+                        font-family: 'Droid Sans', sans-serif !important;
+                    }
+                </style>
+            </t>
+            <div id="wrap" class="oe_structure oe_empty">
+                <!-- Hero Section -->
+                <section style="background-image: url('/sheaonyou/static/src/img/skin_care.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 100vh; position: relative;">
+                    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.5);"></div>
+                    <div class="container" style="position: relative; padding-top: 100px; padding-bottom: 100px;">
+                        <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+                            <div class="col-lg-10 col-xl-9">
+                                <div class="text-center" style="color: white;">
+                                    <h1 class="display-2 fw-bold mb-2" style="color: white; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); line-height: 1.2;">Pure African Shea Butter</h1>
+                                    <h2 class="display-1 fw-bold mb-4" style="color: #f4a460; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">For Your Natural Beauty</h2>
+                                    <p class="lead fs-4 mb-5 mx-auto px-3" style="max-width: 800px; color: #f5f5f5; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);">
+                                        Discover the ancient secret of African beauty with our premium, ethically sourced shea butter products. 100% natural, unrefined, and sustainably harvested.
+                                    </p>
+                                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                                        <a href="/shop" class="btn btn-lg rounded-pill px-5 py-3 fw-semibold" style="background-color: #ff8c00; border-color: #ff8c00; color: white;">Shop Now</a>
+                                        <a href="/about" class="btn btn-outline-light btn-lg rounded-pill px-5 py-3 fw-semibold">Learn More</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Featured Products -->
+                <section style="background-color: #f8f9fa; padding: 80px 0;">
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="text-center mb-5">
+                            <h4 class="display-6 fw-bold mb-3">Featured Products</h4>
+                            <p class="text-muted" style="max-width: 600px; margin: 0 auto;">
+                                Discover our most popular shea butter products, carefully crafted for your skin's natural beauty
+                            </p>
+                        </div>
+                        
+                        <!-- Product Cards -->
+                        <div class="row g-4 mb-5">
+                            <t t-if="products">
+                                <t t-foreach="products" t-as="product">
+                                    <div class="col-lg-3 col-md-6">
+                                        <div class="card h-100 border-0 shadow-sm" style="border-radius: 15px;">
+                                            <div class="position-relative">
+                                                <span class="badge position-absolute top-0 start-0 m-3" style="background-color: #e9964e; z-index: 10;">Best Seller</span>
+                                                <button class="btn btn-light rounded-circle position-absolute top-0 end-0 m-3" style="width: 40px; height: 40px; z-index: 10;">
+                                                    <i class="fa fa-heart-o"></i>
+                                                </button>
+                                                <t t-if="product.image_1024">
+                                                    <img 
+                                                        t-att-src="'/web/image/product.product/%s/image_1024' % product.id" 
+                                                        t-att-alt="product.name" 
+                                                        class="card-img-top" 
+                                                        style="border-radius: 15px 15px 0 0; height: 250px; object-fit: contain; background-color: #fff;"
+                                                    />
+                                                </t>
+                                                <t t-else="">
+                                                    <img src="/web/image/product.template/1/image_1024" class="card-img-top" alt="Raw Unrefined Shea Butter" style="border-radius: 15px 15px 0 0; height: 250px; object-fit: cover; background-color: #d2a679;"/>
+                                                </t>
+                                            </div>
+                                            <div class="card-body text-center">
+                                                <h6 class="card-title fw-semibold mb-2"><t t-esc="product.name"/></h6>
+                                                <div class="mb-2">
+                                                    <span class="fw-bold fs-5" style="color: #000;">
+                                                        <t t-esc="'%s %.2f' % (product.currency_id.symbol, product.list_price)"/>
+                                                    </span>
+                                                </div>
+                                                <!-- <div class="mb-3">
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <i class="fa fa-star text-warning"></i>
+                                                    <span class="text-muted ms-1">(24)</span>
+                                                </div> -->
+                                                <form action="/shop/cart/add" method="POST" class="d-inline">
+                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                    <input type="hidden" name="product_id" t-att-value="product.id"/>
+                                                    <input type="hidden" name="add_qty" value="1"/>
+                                                    <button type="submit" class="btn text-white fw-semibold" style="background-color: #000; border-radius: 10px; width: 200px;">
+                                                        Add to Cart
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                            <t t-else="">
+                                <div class="text-center">
+                                    <p>No products available</p>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+                <!-- Why choose us -->
+                <section style="padding: 80px 0; background-color: #ffffff;">
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="text-center mb-5">
+                            <h2 class="display-6 fw-bold mb-3">Why Choose Our Shea Butter?</h2>
+                            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">
+                                Experience the pure power of African shea butter with our premium, ethically sourced products that deliver exceptional results for your skin
+                            </p>
+                        </div>
+                        
+                        <!-- Features Grid -->
+                        <div class="row g-4">
+                            <!-- Feature 1: 100% Natural & Organic -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="text-center">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background-color: #fef3e8;">
+                                        <i class="fa fa-leaf" style="font-size: 32px; color: #e9964e;"></i>
+                                    </div>
+                                    <h5 class="fw-semibold mb-3">100% Natural &amp; Organic</h5>
+                                    <p class="text-muted" style="font-size: 0.95rem;">
+                                        Pure, unrefined shea butter sourced directly from African shea trees without any chemicals or additives.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Feature 2: Deep Moisturizing -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="text-center">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background-color: #fef3e8;">
+                                        <i class="fa fa-tint" style="font-size: 32px; color: #e9964e;"></i>
+                                    </div>
+                                    <h5 class="fw-semibold mb-3">Deep Moisturizing</h5>
+                                    <p class="text-muted" style="font-size: 0.95rem;">
+                                        Rich in vitamins A, E, and F, providing intense hydration and nourishment for all skin types.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Feature 3: Anti-Aging Properties -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="text-center">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background-color: #fef3e8;">
+                                        <i class="fa fa-shield" style="font-size: 32px; color: #e9964e;"></i>
+                                    </div>
+                                    <h5 class="fw-semibold mb-3">Anti-Aging Properties</h5>
+                                    <p class="text-muted" style="font-size: 0.95rem;">
+                                        Natural anti-inflammatory compounds help reduce signs of aging and promote healthy skin regeneration.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Feature 4: Ethically Sourced -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="text-center">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background-color: #fef3e8;">
+                                        <i class="fa fa-globe" style="font-size: 32px; color: #e9964e;"></i>
+                                    </div>
+                                    <h5 class="fw-semibold mb-3">Ethically Sourced</h5>
+                                    <p class="text-muted" style="font-size: 0.95rem;">
+                                        Supporting African women cooperatives through fair trade practices and sustainable harvesting methods.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Feature 5: Dermatologist Tested -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="text-center">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background-color: #fef3e8;">
+                                        <i class="fa fa-flask" style="font-size: 32px; color: #e9964e;"></i>
+                                    </div>
+                                    <h5 class="fw-semibold mb-3">Dermatologist Tested</h5>
+                                    <p class="text-muted" style="font-size: 0.95rem;">
+                                        Clinically tested and approved for sensitive skin, hypoallergenic and safe for daily use.
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Feature 6: Eco-Friendly Packaging -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="text-center">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background-color: #fef3e8;">
+                                        <i class="fa fa-star-o" style="font-size: 32px; color: #e9964e;"></i>
+                                    </div>
+                                    <h5 class="fw-semibold mb-3">Eco-Friendly Packaging</h5>
+                                    <p class="text-muted" style="font-size: 0.95rem;">
+                                        Committed to sustainability with recyclable packaging and carbon-neutral shipping options.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- What Customers Say -->
+                <section style="padding: 80px 0; background-color: #fef8f0;">
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="text-center mb-5">
+                            <h2 class="display-6 fw-bold mb-3">What Our Customers Say</h2>
+                            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">
+                                Join thousands of satisfied customers who have transformed their skin with our premium shea butter products
+                            </p>
+                        </div>
+                        
+                        <!-- Testimonial Carousel -->
+                        <div class="row justify-content-center mb-5">
+                            <div class="col-lg-8">
+                                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <!-- Testimonial 1 -->
+                                        <div class="carousel-item active">
+                                            <div class="card border-0 shadow-sm" style="border-radius: 20px; background-color: white;">
+                                                <div class="card-body text-center p-5">
+                                                    <img src="/web/image/res.partner/3/avatar_128" class="rounded-circle mb-4" alt="Customer" style="width: 80px; height: 80px; object-fit: cover;"/>
+                                                    <div class="mb-3">
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                    </div>
+                                                    <p class="text-muted mb-4" style="font-size: 1.1rem; font-style: italic;">
+                                                        "I bought the gift set for my wife and she absolutely loves it! The quality is exceptional and the packaging is beautiful. Great customer service and fast shipping too."
+                                                    </p>
+                                                    <h6 class="fw-bold mb-1">David Thompson</h6>
+                                                    <p class="text-muted small mb-0">Florida, USA</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Testimonial 2 -->
+                                        <div class="carousel-item">
+                                            <div class="card border-0 shadow-sm" style="border-radius: 20px; background-color: white;">
+                                                <div class="card-body text-center p-5">
+                                                    <img src="/web/image/res.partner/3/avatar_128" class="rounded-circle mb-4" alt="Customer" style="width: 80px; height: 80px; object-fit: cover;"/>
+                                                    <div class="mb-3">
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                    </div>
+                                                    <p class="text-muted mb-4" style="font-size: 1.1rem; font-style: italic;">
+                                                        "This shea butter has transformed my dry skin! It's so rich and moisturizing, and I love that it's all natural. Will definitely be ordering again."
+                                                    </p>
+                                                    <h6 class="fw-bold mb-1">Sarah Johnson</h6>
+                                                    <p class="text-muted small mb-0">California, USA</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Testimonial 3 -->
+                                        <div class="carousel-item">
+                                            <div class="card border-0 shadow-sm" style="border-radius: 20px; background-color: white;">
+                                                <div class="card-body text-center p-5">
+                                                    <img src="/web/image/res.partner/3/avatar_128" class="rounded-circle mb-4" alt="Customer" style="width: 80px; height: 80px; object-fit: cover;"/>
+                                                    <div class="mb-3">
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                        <i class="fa fa-star" style="color: #ffc107;"></i>
+                                                    </div>
+                                                    <p class="text-muted mb-4" style="font-size: 1.1rem; font-style: italic;">
+                                                        "Best shea butter I've ever used! My skin feels so soft and nourished. The ethical sourcing is also very important to me. Highly recommend!"
+                                                    </p>
+                                                    <h6 class="fw-bold mb-1">Emily Chen</h6>
+                                                    <p class="text-muted small mb-0">New York, USA</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Carousel Controls -->
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev" style="width: 50px; height: 50px; top: 50%; transform: translateY(-50%); left: -70px;">
+                                        <span class="rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background-color: #e9964e;">
+                                            <i class="fa fa-chevron-left text-white"></i>
+                                        </span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next" style="width: 50px; height: 50px; top: 50%; transform: translateY(-50%); right: -70px;">
+                                        <span class="rounded-circle d-flex align-items-center justify-content-center" style="width: 50px; height: 50px; background-color: #e9964e;">
+                                            <i class="fa fa-chevron-right text-white"></i>
+                                        </span>
+                                    </button>
+                                    
+                                    <!-- Carousel Indicators -->
+                                    <div class="carousel-indicators" style="bottom: -50px;">
+                                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" style="width: 12px; height: 12px; border-radius: 50%; background-color: #e9964e;"></button>
+                                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" style="width: 12px; height: 12px; border-radius: 50%; background-color: #d3d3d3;"></button>
+                                        <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="2" style="width: 12px; height: 12px; border-radius: 50%; background-color: #d3d3d3;"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Statistics -->
+                        <div class="row text-center mt-5 pt-5">
+                            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                <h2 class="fw-bold mb-2" style="color: #e9964e; font-size: 2.5rem;">10,000+</h2>
+                                <p class="text-muted mb-0">Happy Customers</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                <h2 class="fw-bold mb-2" style="color: #e9964e; font-size: 2.5rem;">4.9/5</h2>
+                                <p class="text-muted mb-0">Average Rating</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                                <h2 class="fw-bold mb-2" style="color: #e9964e; font-size: 2.5rem;">50+</h2>
+                                <p class="text-muted mb-0">Countries Shipped</p>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <h2 class="fw-bold mb-2" style="color: #e9964e; font-size: 2.5rem;">100%</h2>
+                                <p class="text-muted mb-0">Natural Products</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </t>
+    </template>
+</odoo>

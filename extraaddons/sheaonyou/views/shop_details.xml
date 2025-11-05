@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="shop_details" name="Shop Details">
+        <t t-call="website.layout">
+            <t t-set="head">
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+                <link href="https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+                <style>
+                    body, h1, h2, h3, h4, h5, h6, p, a, button, .btn {
+                        font-family: 'Droid Sans', sans-serif !important;
+                    }
+                </style>
+            </t>
+            <div class="container my-5">
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="mb-4">
+                    <ol class="breadcrumb" style="background: transparent; padding: 0;">
+                        <li class="breadcrumb-item"><a href="/" style="color: #666; text-decoration: none;">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/shop_new" style="color: #666; text-decoration: none;">Shop</a></li>
+                        <li class="breadcrumb-item active" style="color: #000;">Whipped Shea Body Butter</li>
+                    </ol>
+                </nav>
+
+                <!-- Product Details Section -->
+                <div class="row">
+                    <t t-if="product">
+                    <!-- Left Side - Product Image -->
+                    <div class="col-lg-6 col-md-6 mb-4">
+                        <t t-if="product.image_1024">
+                        <div style="background: #f5f5f5; border-radius: 12px; padding: 40px; text-align: center;">
+                            <img t-attf-src="/web/image/product.product/#{product.id}/image_1024" alt="Product" style="max-width: 100%; height: auto; border-radius: 8px;"/>
+                        </div>
+                        </t>
+                        <t t-else="">
+                            <div style="background: #f5f5f5; border-radius: 12px; padding: 40px; text-align: center;">
+                                <img src="/web/image/product.template/1/image_512" alt="Product" style="max-width: 100%; height: auto; border-radius: 8px;"/>
+                            </div>
+                        </t>
+                    </div>
+
+                    <!-- Right Side - Product Details -->
+                    <div class="col-lg-6 col-md-6">
+                        <!-- Product Title -->
+                        <h1 style="font-weight: 700; font-size: 2rem; margin-bottom: 15px;"><t t-esc="product.name"/></h1>
+                        
+                        <!-- Rating -->
+                        <!-- <div class="mb-3">
+                            <span style="color: #ffc107; font-size: 1.2rem;">★★★★</span><span style="color: #ddd; font-size: 1.2rem;">★</span>
+                            <span style="font-size: 0.95rem; color: #666; margin-left: 8px;">(156 reviews)</span>
+                        </div> -->
+
+                        <!-- Price -->
+                        <div class="mb-4">
+                            <span style="font-weight: 700; font-size: 2.5rem; color: #000;"><t t-esc="'%s %.2f' % (product.currency_id.symbol, product.list_price)"/></span>
+                            <!-- <span style="font-size: 1.5rem; color: #999; text-decoration: line-through; margin-left: 15px;">$24.99</span>
+                            <span class="badge" style="background: #ffe5e5; color: #ff4444; padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; font-weight: 600; margin-left: 10px;">Save $5.00</span> -->
+                        </div>
+
+                        <!-- Scent Options -->
+                        <!-- <div class="mb-4">
+                            <h6 style="font-weight: 700; margin-bottom: 12px;">Scent</h6>
+                            <div class="btn-group" role="group">
+                                <input type="radio" class="btn-check" name="scent" id="vanilla" checked=""/>
+                                <label class="btn btn-outline-warning" for="vanilla" style="border: 2px solid #e9964e; color: #e9964e; font-weight: 600; padding: 10px 24px; border-radius: 8px 0 0 8px;">Vanilla</label>
+                                
+                                <input type="radio" class="btn-check" name="scent" id="unscented"/>
+                                <label class="btn btn-outline-secondary" for="unscented" style="border: 2px solid #ddd; color: #666; font-weight: 600; padding: 10px 24px; border-radius: 0; margin-left: -2px;">Unscented</label>
+                                
+                                <input type="radio" class="btn-check" name="scent" id="lavender"/>
+                                <label class="btn btn-outline-secondary" for="lavender" style="border: 2px solid #ddd; color: #666; font-weight: 600; padding: 10px 24px; border-radius: 0 8px 8px 0; margin-left: -2px;">Lavender</label>
+                            </div>
+                        </div> -->
+
+                        <!-- Quantity -->
+                        <div class="mb-4">
+                            <h6 style="font-weight: 700; margin-bottom: 12px;">Quantity</h6>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex align-items-center" style="border: 2px solid #ddd; border-radius: 8px; padding: 8px 16px;">
+                                    <button class="btn btn-sm p-0" style="border: none; background: transparent; font-size: 1.5rem; width: 30px; color: #666;">−</button>
+                                    <input type="number" value="1" class="form-control text-center" style="border: none; width: 60px; font-weight: 600; box-shadow: none;"/>
+                                    <button class="btn btn-sm p-0" style="border: none; background: transparent; font-size: 1.5rem; width: 30px; color: #666;">+</button>
+                                </div>
+                                <span style="color: #666; font-size: 0.95rem;">24 in stock</span>
+                            </div>
+                        </div>
+
+                        <!-- Add to Cart Button -->
+                        <div class="mb-4">
+                            <div class="d-flex gap-2">
+                                <form action="/shop/cart/add" method="POST" class="flex-grow-1">
+                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                    <input type="hidden" name="product_id" t-att-value="product.id"/>
+                                    <input type="hidden" name="add_qty" value="1"/>
+                                    <button type="submit" class="btn w-100" style="background: #000; color: white; border: none; border-radius: 8px; padding: 15px; font-weight: 600; font-size: 1.1rem;">
+                                        Add to Cart - <t t-esc="'%s %.2f' % (product.currency_id.symbol, product.list_price)"/>
+                                    </button>
+                                </form>
+                                <button class="btn" style="background: transparent; border: 2px solid #ddd; border-radius: 8px; padding: 15px 20px;">
+                                    <i class="fa fa-heart-o" style="font-size: 1.2rem; color: #666;"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Feature Badges -->
+                        <div class="mb-4">
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge" style="background: #e8f5e9; color: #2e7d32; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600;">Organic</span>
+                                <span class="badge" style="background: #e3f2fd; color: #1565c0; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600;">Cruelty-Free</span>
+                                <span class="badge" style="background: #fff3e0; color: #e65100; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600;">Fair Trade</span>
+                                <span class="badge" style="background: #f3e5f5; color: #6a1b9a; padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 600;">Handcrafted</span>
+                            </div>
+                        </div>
+
+                        <!-- Shipping Info -->
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center mb-2" style="padding: 12px; background: #f9f9f9; border-radius: 8px;">
+                                <i class="fa fa-truck" style="color: #e9964e; font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="color: #333; font-size: 0.95rem;">Free shipping on orders over $50</span>
+                            </div>
+                            <div class="d-flex align-items-center" style="padding: 12px; background: #f9f9f9; border-radius: 8px;">
+                                <i class="fa fa-refresh" style="color: #e9964e; font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="color: #333; font-size: 0.95rem;">30-day money-back guarantee</span>
+                            </div>
+                        </div>
+                    </div>
+                    </t>
+
+                    <t t-else="">
+                        <div class="text-center">
+                            <h1>Product Not Found</h1>
+                            <p>Sorry, the product you are looking for does not exist.</p>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

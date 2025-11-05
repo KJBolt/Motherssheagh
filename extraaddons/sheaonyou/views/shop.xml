@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="shop" name="Shop">
+        <t t-call="website.layout">
+            <t t-set="head">
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+                <link href="https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+                <style>
+                    body, h1, h2, h3, h4, h5, h6, p, a, button, .btn {
+                        font-family: 'Droid Sans', sans-serif !important;
+                    }
+                </style>
+            </t>
+            <!-- Hero Section -->
+            <section class="hero-section" style="background-image: url('/sheaonyou/static/src/img/skin_care.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 400px; display: flex; align-items: center; justify-content: center; position: relative;">
+                <!-- Overlay for better text readability -->
+                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.3);"></div>
+                
+                <div class="container" style="position: relative; z-index: 1;">
+                    <div class="row">
+                        <div class="col-12 text-center text-white">
+                            <!-- Main Heading -->
+                            <h1 class="mb-4" style="font-size: 3.5rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Pure Shea Collection</h1>
+                            
+                            <!-- Description -->
+                            <p class="mb-5" style="font-size: 1.125rem; max-width: 800px; margin-left: auto; margin-right: auto; text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">Discover our complete range of premium shea butter products, ethically sourced and naturally crafted for your skin's perfect care</p>
+                            
+                            <!-- Feature Badges -->
+                            <div class="d-flex flex-wrap justify-content-center gap-3" style="gap: 1.5rem;">
+                                <!-- Badge 1: 100% Natural -->
+                                <div class="badge-item d-flex align-items-center" style="background: rgba(255, 255, 255, 0.9); padding: 12px 24px; border-radius: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                    <span style="font-size: 1.5rem; margin-right: 10px;">🌿</span>
+                                    <span style="color: #000; font-weight: 600; font-size: 0.95rem;">100% Natural</span>
+                                </div>
+                                
+                                <!-- Badge 2: Ethically Sourced -->
+                                <div class="badge-item d-flex align-items-center" style="background: rgba(255, 255, 255, 0.9); padding: 12px 24px; border-radius: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                    <span style="font-size: 1.5rem; margin-right: 10px;">🌍</span>
+                                    <span style="color: #000; font-weight: 600; font-size: 0.95rem;">Ethically Sourced</span>
+                                </div>
+                                
+                                <!-- Badge 3: Free Shipping -->
+                                <div class="badge-item d-flex align-items-center" style="background: rgba(255, 255, 255, 0.9); padding: 12px 24px; border-radius: 25px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                    <span style="font-size: 1.5rem; margin-right: 10px;">📦</span>
+                                    <span style="color: #000; font-weight: 600; font-size: 0.95rem;">Free Shipping $50+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="container my-5">
+                <!-- All Products Section -->
+                <div class="row">
+                    <!-- Left Sidebar - Filters -->
+                    <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="mb-4">
+                            <h6 style="font-weight: 700; margin-bottom: 15px;">Search Products</h6>
+                            <div class="input-group" style="border: 1px solid #ddd; border-radius: 8px;">
+                                <span class="input-group-text" style="background: transparent; border: none;"><i class="fa fa-search" style="color: #999;"></i></span>
+                                <input type="text" id="product-search-input" class="form-control" placeholder="Search for products..." style="border: none; box-shadow: none;"/>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <h6 style="font-weight: 700; margin-bottom: 15px;">Sort By</h6>
+                            <select id="product-sort-select" class="form-select" style="border: 1px solid #ddd; border-radius: 8px; padding: 10px;">
+                                <option value="">Default</option>
+                                <option value="price_high_low">Price: High to Low</option>
+                                <option value="price_low_high">Price: Low to High</option>
+                            </select>
+                        </div>
+                        <!-- <div class="mb-4">
+                            <h6 style="font-weight: 700; margin-bottom: 15px;">Categories</h6>
+                            <div class="list-group" style="border: none;">
+                                <a href="#" class="list-group-item d-flex justify-content-between" style="border: none; background: #fff9e6; border-radius: 8px; margin-bottom: 8px; padding: 12px 15px;">
+                                    <span style="font-weight: 500;">All Products</span>
+                                    <span class="badge" style="background: #e9964e; color: white;">124</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex justify-content-between" style="border: none; background: transparent; border-radius: 8px; margin-bottom: 8px; padding: 12px 15px;">
+                                    <span>Raw Shea Butter</span>
+                                    <span class="badge bg-light text-dark">45</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex justify-content-between" style="border: none; background: transparent; border-radius: 8px; margin-bottom: 8px; padding: 12px 15px;">
+                                    <span>Body Care</span>
+                                    <span class="badge bg-light text-dark">32</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex justify-content-between" style="border: none; background: transparent; border-radius: 8px; margin-bottom: 8px; padding: 12px 15px;">
+                                    <span>Face Care</span>
+                                    <span class="badge bg-light text-dark">28</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex justify-content-between" style="border: none; background: transparent; border-radius: 8px; margin-bottom: 8px; padding: 12px 15px;">
+                                    <span>Gift Sets</span>
+                                    <span class="badge bg-light text-dark">15</span>
+                                </a>
+                                <a href="#" class="list-group-item d-flex justify-content-between" style="border: none; background: transparent; border-radius: 8px; margin-bottom: 8px; padding: 12px 15px;">
+                                    <span>Accessories</span>
+                                    <span class="badge bg-light text-dark">4</span>
+                                </a>
+                            </div>
+                        </div> -->
+                        <div class="mb-4">
+                            <h6 style="font-weight: 700; margin-bottom: 15px;">Price Range</h6>
+                            <div class="d-flex gap-2 align-items-center">
+                                <input type="number" id="price-min-input" class="form-control" placeholder="$0" min="0" style="border: 1px solid #ddd; border-radius: 8px;"/>
+                                <span>-</span>
+                                <input type="number" id="price-max-input" class="form-control" placeholder="$100" min="0" style="border: 1px solid #ddd; border-radius: 8px;"/>
+                            </div>
+                        </div>
+                        <a t-attf-href="/shop_new" class="btn w-100" style="background: transparent; color: #e9964e; border: 1px solid #e9964e; border-radius: 8px; padding: 10px; font-weight: 600;">Clear All Filters</a>
+                    </div>
+
+                    <!-- Right Side - Products Grid -->
+                    <div class="col-lg-9 col-md-8">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div>
+                                <h4 style="font-weight: 700; margin-bottom: 5px;">All Products</h4>
+                                <p id="product-count" style="color: #666; margin: 0;">Showing <t t-esc="len(products)"/> products</p>
+                            </div>
+                            <div></div>
+                        </div>
+
+                        <t t-if="products">
+                            <div class="row" id="products-container">
+                                <!-- Product cards will be dynamically loaded here -->
+                                <t t-foreach="products" t-as="product">
+                                    <div class="col-lg-4 col-md-6 mb-4">
+                                        <div class="card h-100" style="border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; position: relative;">
+                                            <div style="position: absolute; top: 10px; left: 10px; z-index: 2;">
+                                                <span class="badge" style="background: #ff4444; color: white; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 5px;">Best Seller</span>
+                                                <span class="badge" style="background: #ff4444; color: white; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600;">-27%</span>
+                                            </div>
+                                            <div style="position: absolute; top: 10px; right: 10px; z-index: 2;">
+                                                <button class="btn btn-light" style="width: 35px; height: 35px; border-radius: 50%; padding: 0;"><i class="fa fa-heart-o"></i></button>
+                                            </div>
+                                            <div style="background: #f5f5f5; padding: 20px; text-align: center; height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                                <t t-if="product.image_1024">
+                                                    <img t-att-src="'/web/image/product.product/%s/image_1024' % product.id" alt="Product" style="max-width: 100%; max-height: 100%; object-fit: cover;"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <img src="/web/image/product.template/1/image_1024" class="card-img-top" alt="Raw Unrefined Shea Butter" style="max-width: 100%; max-height: 100%; object-fit: cover;"/>
+                                                </t>
+                                            </div>
+                                            <div style="position: absolute; bottom: 180px; right: 10px; z-index: 2;">
+                                                <a t-attf-href="/shop_details/{{product.id}}" class="btn btn-light" style="width: 35px; height: 35px; border-radius: 50%; padding: 0;"><i class="fa fa-eye"></i></a>
+                                            </div>
+                                            <div class="card-body">
+                                                <h6 class="card-title" style="font-weight: 700; font-size: 0.95rem; margin-bottom: 8px;"><t t-esc="product.name"/></h6>
+                                                <!-- <p class="card-text" style="font-size: 0.85rem; color: #666; margin-bottom: 10px;"><t t-esc="product.description"/></p> -->
+                                                <div class="d-flex align-items-center mb-3">
+                                                    <span style="font-weight: 700; font-size: 1.25rem; color: #000;"><t t-esc="'%s %.2f' % (product.currency_id.symbol, product.list_price)"/></span>
+                                                    <!-- <span style="font-size: 0.95rem; color: #999; text-decoration: line-through; margin-left: 10px;"><t t-esc="product.original_price"/></span> -->
+                                                </div>
+                                                <form action="/shop/cart/add" method="POST" class="add-to-cart-form">
+                                                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                                    <input type="hidden" name="product_id" t-att-value="product.id"/>
+                                                    <button type="submit" class="btn w-100" style="background: #1a1a1a; color: white; border: none; border-radius: 8px; padding: 12px; font-weight: 600;">Add to Cart</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>No products found.</p>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Search, Sort, and Price Filter Script -->
+            <script type="text/javascript">
+            // <![CDATA[
+                document.addEventListener('DOMContentLoaded', function() {
+                    const searchInput = document.getElementById('product-search-input');
+                    const sortSelect = document.getElementById('product-sort-select');
+                    const priceMinInput = document.getElementById('price-min-input');
+                    const priceMaxInput = document.getElementById('price-max-input');
+                    const productsContainer = document.getElementById('products-container');
+                    let searchTimeout;
+
+                    // Handle search input
+                    if (searchInput) {
+                        searchInput.addEventListener('input', function(e) {
+                            const searchQuery = e.target.value;
+                            
+                            // Clear previous timeout
+                            clearTimeout(searchTimeout);
+                            
+                            // Debounce search by 300ms
+                            searchTimeout = setTimeout(function() {
+                                fetchProducts();
+                            }, 300);
+                        });
+                    }
+
+                    // Handle sort change
+                    if (sortSelect) {
+                        sortSelect.addEventListener('change', function(e) {
+                            fetchProducts();
+                        });
+                    }
+
+                    // Handle price range inputs
+                    if (priceMinInput) {
+                        priceMinInput.addEventListener('input', function(e) {
+                            clearTimeout(searchTimeout);
+                            searchTimeout = setTimeout(function() {
+                                fetchProducts();
+                            }, 500);
+                        });
+                    }
+
+                    if (priceMaxInput) {
+                        priceMaxInput.addEventListener('input', function(e) {
+                            clearTimeout(searchTimeout);
+                            searchTimeout = setTimeout(function() {
+                                fetchProducts();
+                            }, 500);
+                        });
+                    }
+
+                    function fetchProducts() {
+                        const searchQuery = searchInput ? searchInput.value : '';
+                        const sortBy = sortSelect ? sortSelect.value : '';
+                        const priceMin = priceMinInput ? priceMinInput.value : '';
+                        const priceMax = priceMaxInput ? priceMaxInput.value : '';
+                        
+                        // Make AJAX call to search endpoint
+                        fetch('/shop/search', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                jsonrpc: '2.0',
+                                method: 'call',
+                                params: {
+                                    search_query: searchQuery,
+                                    sort_by: sortBy,
+                                    price_min: priceMin,
+                                    price_max: priceMax
+                                }
+                            })
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.result) {
+                                updateProductsGrid(data.result);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Search/Sort error:', error);
+                        });
+                    }
+
+                    function updateProductsGrid(products) {
+                        if (!productsContainer) return;
+                        
+                        if (products.length === 0) {
+                            productsContainer.innerHTML = '<div class="col-12"><p>No products found.</p></div>';
+                            return;
+                        }
+
+                        let html = '';
+                        products.forEach(function(product) {
+                            html += `
+                                <div class="col-lg-4 col-md-6 mb-4">
+                                    <div class="card h-100" style="border: 1px solid #e5e5e5; border-radius: 12px; overflow: hidden; position: relative;">
+                                        <div style="position: absolute; top: 10px; left: 10px; z-index: 2;">
+                                            <span class="badge" style="background: #ff4444; color: white; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 5px;">Best Seller</span>
+                                            <span class="badge" style="background: #ff4444; color: white; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600;">-27%</span>
+                                        </div>
+                                        <div style="position: absolute; top: 10px; right: 10px; z-index: 2;">
+                                            <button class="btn btn-light" style="width: 35px; height: 35px; border-radius: 50%; padding: 0;"><i class="fa fa-heart-o"></i></button>
+                                        </div>
+                                        <div style="background: #f5f5f5; padding: 20px; text-align: center; height: 250px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                                            <img src="${product.image_url}" alt="Product" style="max-width: 100%; max-height: 100%; object-fit: cover;"/>
+                                        </div>
+                                        <div style="position: absolute; bottom: 180px; right: 10px; z-index: 2;">
+                                            <a href="/shop_details/{{product.id}}" class="btn btn-light" style="width: 35px; height: 35px; border-radius: 50%; padding: 0;"><i class="fa fa-eye"></i></a>
+                                        </div>
+                                        <div class="card-body">
+                                            <h6 class="card-title" style="font-weight: 700; font-size: 0.95rem; margin-bottom: 8px;">${product.name}</h6>
+                                            <div class="d-flex align-items-center mb-3">
+                                                <span style="font-weight: 700; font-size: 1.25rem; color: #000;">${product.currency_symbol} ${product.list_price.toFixed(2)}</span>
+                                            </div>
+                                            <form action="/shop/cart/add" method="POST" class="add-to-cart-form">
+                                                <input type="hidden" name="csrf_token" value="${document.querySelector('input[name=csrf_token]').value}" />
+                                                <input type="hidden" name="product_id" value="${product.id}" />
+                                                <button type="submit" class="btn w-100" style="background: #1a1a1a; color: white; border: none; border-radius: 8px; padding: 12px; font-weight: 600;">Add to Cart</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        
+                        productsContainer.innerHTML = html;
+                        
+                        // Update product count
+                        const productCountEl = document.getElementById('product-count');
+                        if (productCountEl) {
+                            productCountEl.textContent = 'Showing ' + products.length + ' products';
+                        }
+                    }
+                });
+            // ]]>
+            </script>
+
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="contact" name="Contact">
+        <t t-call="website.layout">
+            <t t-set="head">
+                <link rel="preconnect" href="https://fonts.googleapis.com"/>
+                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+                <link href="https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+                <style>
+                    body, h1, h2, h3, h4, h5, h6, p, a, button, .btn {
+                        font-family: 'Droid Sans', sans-serif !important;
+                    }
+                </style>
+            </t>
+
+
+            <div id="wrap" class="oe_structure oe_empty">
+                <!-- First Section - Hero Banner -->
+                <section style="position: relative; padding: 120px 0; background-image: url('/sheaonyou/static/src/img/skin_care.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-12 text-center text-white">
+                                <h1 class="display-4 fw-bold mb-4">Get in Touch</h1>
+                                <p class="lead mb-0" style="max-width: 700px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
+                                    We'd love to hear from you. Reach out to learn more about our pure shea butter products and ethical sourcing practices.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Second Section - Contact Information -->
+                <section style="padding: 80px 0; background-color: #ffffff;">
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="text-center mb-5">
+                            <h2 class="fw-bold mb-3">Contact Information</h2>
+                            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">
+                                Multiple ways to reach our team. We're here to help with any questions about our products or wholesale opportunities.
+                            </p>
+                        </div>
+                        
+                        <!-- Contact Cards Grid -->
+                        <div class="row g-4">
+                            <!-- Phone Card -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 border-0" style="background-color: #fef8f0; border-radius: 10px; padding: 30px; text-align: center;">
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 50px; height: 50px; background-color: #e9964e;">
+                                            <i class="fa fa-phone" style="font-size: 20px; color: white;"></i>
+                                        </div>
+                                    </div>
+                                    <h6 class="fw-bold mb-2">Phone</h6>
+                                    <p class="mb-1" style="color: #e9964e; font-size: 0.95rem; font-weight: 500;">+1 (555) 123-4567</p>
+                                    <p class="text-muted mb-0" style="font-size: 0.85rem;">Mon-Fri 9AM-6PM EST</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Email Card -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 border-0" style="background-color: #fef8f0; border-radius: 10px; padding: 30px; text-align: center;">
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 50px; height: 50px; background-color: #e9964e;">
+                                            <i class="fa fa-envelope" style="font-size: 20px; color: white;"></i>
+                                        </div>
+                                    </div>
+                                    <h6 class="fw-bold mb-2">Email</h6>
+                                    <p class="mb-1" style="color: #e9964e; font-size: 0.95rem; font-weight: 500;">hello@pureshea.com</p>
+                                    <p class="text-muted mb-0" style="font-size: 0.85rem;">We respond within 24 hours</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Address Card -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 border-0" style="background-color: #fef8f0; border-radius: 10px; padding: 30px; text-align: center;">
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 50px; height: 50px; background-color: #e9964e;">
+                                            <i class="fa fa-map-marker" style="font-size: 20px; color: white;"></i>
+                                        </div>
+                                    </div>
+                                    <h6 class="fw-bold mb-2">Address</h6>
+                                    <p class="mb-1" style="color: #e9964e; font-size: 0.95rem; font-weight: 500;">123 Natural Beauty Lane</p>
+                                    <p class="text-muted mb-0" style="font-size: 0.85rem;">Austin, TX 78701, USA</p>
+                                </div>
+                            </div>
+                            
+                            <!-- Business Hours Card -->
+                            <div class="col-lg-3 col-md-6">
+                                <div class="card h-100 border-0" style="background-color: #fef8f0; border-radius: 10px; padding: 30px; text-align: center;">
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 50px; height: 50px; background-color: #e9964e;">
+                                            <i class="fa fa-clock-o" style="font-size: 20px; color: white;"></i>
+                                        </div>
+                                    </div>
+                                    <h6 class="fw-bold mb-2">Business Hours</h6>
+                                    <p class="mb-1" style="color: #e9964e; font-size: 0.95rem; font-weight: 500;">Monday - Friday</p>
+                                    <p class="text-muted mb-0" style="font-size: 0.85rem;">9:00 AM - 5:00 PM EST</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+
+                <!-- Third Section - Contact Form -->
+                <section style="padding: 80px 0; background-color: #f8f9fa;">
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="text-center mb-5">
+                            <h2 class="fw-bold mb-3">Send Us a Message</h2>
+                            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">
+                                Have questions about our products, wholesale opportunities, or partnerships? We'd love to hear from you.
+                            </p>
+                        </div>
+                        
+                        <!-- Contact Form -->
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="card border-0 shadow-sm" style="border-radius: 15px; padding: 40px;">
+                                    <form action="/contact/submit" method="post">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        
+                                        <div class="row g-3">
+                                            <!-- Full Name and Email Address Row -->
+                                            <div class="col-md-6">
+                                                <label for="full_name" class="form-label" style="font-weight: 500; font-size: 0.9rem;">Full Name <span style="color: #e9964e;">*</span></label>
+                                                <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Your full name" required="" style="padding: 12px; border: 1px solid #dee2e6; border-radius: 8px;"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="email" class="form-label" style="font-weight: 500; font-size: 0.9rem;">Email Address <span style="color: #e9964e;">*</span></label>
+                                                <input type="email" class="form-control" id="email" name="email" placeholder="your.email@example.com" required="" style="padding: 12px; border: 1px solid #dee2e6; border-radius: 8px;"/>
+                                            </div>
+                                            
+                                            <!-- Phone Number and Inquiry Type Row -->
+                                            <div class="col-md-6">
+                                                <label for="phone" class="form-label" style="font-weight: 500; font-size: 0.9rem;">Phone Number</label>
+                                                <input type="tel" class="form-control" id="phone" name="phone" placeholder="+1 (555) 123-4567" style="padding: 12px; border: 1px solid #dee2e6; border-radius: 8px;"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="inquiry_type" class="form-label" style="font-weight: 500; font-size: 0.9rem;">Inquiry Type</label>
+                                                <select class="form-select" id="inquiry_type" name="inquiry_type" style="padding: 12px; border: 1px solid #dee2e6; border-radius: 8px;">
+                                                    <option value="general">General Inquiry</option>
+                                                    <option value="product">Product Information</option>
+                                                    <option value="wholesale">Wholesale Opportunities</option>
+                                                    <option value="partnership">Partnership</option>
+                                                    <option value="support">Customer Support</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <!-- Subject Row -->
+                                            <div class="col-12">
+                                                <label for="subject" class="form-label" style="font-weight: 500; font-size: 0.9rem;">Subject <span style="color: #e9964e;">*</span></label>
+                                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Brief description of your inquiry" required="" style="padding: 12px; border: 1px solid #dee2e6; border-radius: 8px;"/>
+                                            </div>
+                                            
+                                            <!-- Message Row -->
+                                            <div class="col-12">
+                                                <label for="message" class="form-label" style="font-weight: 500; font-size: 0.9rem;">Message <span style="color: #e9964e;">*</span></label>
+                                                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Please provide details about your inquiry..." required="" style="padding: 12px; border: 1px solid #dee2e6; border-radius: 8px; resize: vertical;"></textarea>
+                                                <small class="text-muted">0/500 characters</small>
+                                            </div>
+                                            
+                                            <!-- Submit Button -->
+                                            <div class="col-12 text-center mt-4">
+                                                <button type="submit" class="btn btn-lg" style="background-color: #e9964e; color: white; padding: 12px 40px; border: none; border-radius: 8px; font-weight: 500;">
+                                                    <i class="fa fa-paper-plane me-2"></i>Send Message
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+
+                <!-- Fourth Section - FAQ -->
+                <section style="padding: 80px 0; background-color: #ffffff;">
+                    <div class="container">
+                        <!-- Section Header -->
+                        <div class="text-center mb-5">
+                            <h2 class="fw-bold mb-3">Frequently Asked Questions</h2>
+                            <p class="text-muted" style="max-width: 700px; margin: 0 auto;">
+                                Quick answers to common questions. Can't find what you're looking for? Contact us directly.
+                            </p>
+                        </div>
+                        
+                        <!-- FAQ Accordion -->
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="accordion" id="faqAccordion">
+                                    
+                                    <!-- FAQ 1 -->
+                                    <div class="accordion-item mb-3" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+                                        <h2 class="accordion-header" id="faq1">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1" style="padding: 20px 25px; font-weight: 500; background-color: white; color: #333;">
+                                                What is your response time for inquiries?
+                                            </button>
+                                        </h2>
+                                        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body" style="padding: 20px 25px; color: #666; line-height: 1.6;">
+                                                We typically respond to all inquiries within 24 hours during business days (Monday-Friday). For urgent matters, please call us directly at +1 (555) 123-4567.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- FAQ 2 -->
+                                    <div class="accordion-item mb-3" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+                                        <h2 class="accordion-header" id="faq2">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2" style="padding: 20px 25px; font-weight: 500; background-color: white; color: #333;">
+                                                Do you offer wholesale pricing?
+                                            </button>
+                                        </h2>
+                                        <div id="collapse2" class="accordion-collapse collapse" aria-labelledby="faq2" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body" style="padding: 20px 25px; color: #666; line-height: 1.6;">
+                                                Yes! We offer competitive wholesale pricing for bulk orders. Minimum order quantities apply. Please contact us through the form above or email wholesale@pureshea.com for detailed pricing information.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- FAQ 3 -->
+                                    <div class="accordion-item mb-3" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+                                        <h2 class="accordion-header" id="faq3">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3" style="padding: 20px 25px; font-weight: 500; background-color: white; color: #333;">
+                                                Can I visit your facility?
+                                            </button>
+                                        </h2>
+                                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="faq3" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body" style="padding: 20px 25px; color: #666; line-height: 1.6;">
+                                                We welcome facility visits by appointment only. Please contact us at least 48 hours in advance to schedule a tour. We're located at 123 Natural Beauty Lane, Austin, TX 78701.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- FAQ 4 -->
+                                    <div class="accordion-item mb-3" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+                                        <h2 class="accordion-header" id="faq4">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4" style="padding: 20px 25px; font-weight: 500; background-color: white; color: #333;">
+                                                Do you ship internationally?
+                                            </button>
+                                        </h2>
+                                        <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="faq4" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body" style="padding: 20px 25px; color: #666; line-height: 1.6;">
+                                                Yes, we ship to most countries worldwide. International shipping rates and delivery times vary by location. Please contact us for specific shipping quotes to your country.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- FAQ 5 -->
+                                    <div class="accordion-item mb-3" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+                                        <h2 class="accordion-header" id="faq5">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5" style="padding: 20px 25px; font-weight: 500; background-color: white; color: #333;">
+                                                What certifications do your products have?
+                                            </button>
+                                        </h2>
+                                        <div id="collapse5" class="accordion-collapse collapse" aria-labelledby="faq5" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body" style="padding: 20px 25px; color: #666; line-height: 1.6;">
+                                                Our products are certified organic, Fair Trade, and cruelty-free. We also hold certifications from major organic and natural product associations. All certifications are available for review upon request.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- FAQ 6 -->
+                                    <div class="accordion-item mb-3" style="border: 1px solid #e0e0e0; border-radius: 10px; overflow: hidden;">
+                                        <h2 class="accordion-header" id="faq6">
+                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6" style="padding: 20px 25px; font-weight: 500; background-color: white; color: #333;">
+                                                How can I become a retail partner?
+                                            </button>
+                                        </h2>
+                                        <div id="collapse6" class="accordion-collapse collapse" aria-labelledby="faq6" data-bs-parent="#faqAccordion">
+                                            <div class="accordion-body" style="padding: 20px 25px; color: #666; line-height: 1.6;">
+                                                We're always looking for retail partners who share our values. Please fill out the contact form above selecting "Partnership" as your inquiry type, or email partners@pureshea.com with information about your business.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+            </div>
+        </t>
+    </template>
+</odoo>
