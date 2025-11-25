@@ -9,6 +9,7 @@ class CartController(http.Controller):
         order = request.website.sale_get_order()
         return request.render('sheaonyou.cart', {'order': order})
     
+
     @http.route('/shop/cart/add', type='http', auth='public', website=True, methods=['POST'])
     def add_to_cart(self, product_id, **kwargs):
         """Add product to cart and redirect to cart page"""
@@ -31,6 +32,7 @@ class CartController(http.Controller):
         
         # Redirect to cart page
         return request.redirect('/shop/cart_new')
+    
     
     @http.route('/shop/cart/update_line', type='json', auth='public', website=True)
     def update_cart_line(self, line_id=None, set_qty=None, **kwargs):

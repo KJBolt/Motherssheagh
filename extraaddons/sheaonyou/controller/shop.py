@@ -6,7 +6,7 @@ class AllProducts(http.Controller):
     @http.route('/shop_new', type='http', auth='public', website=True)
     def all_products(self):
 
-        products = request.env['product.template'].search([
+        products = request.env['product.template'].sudo().search([
             ('name', '!=', 'Standard delivery')
         ])
         return request.render('sheaonyou.shop', {'products': products})
@@ -39,7 +39,7 @@ class AllProducts(http.Controller):
         elif sort_by == 'price_high_low':
             order = 'list_price desc'
         
-        products = request.env['product.template'].search(domain, order=order)
+        products = request.env['product.template'].sudo().search(domain, order=order)
         
         # Format products data for JSON response
         products_data = []

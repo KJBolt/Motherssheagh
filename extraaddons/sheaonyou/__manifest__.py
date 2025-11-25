@@ -14,6 +14,7 @@
         'views/cart.xml',
         'views/shop.xml',
         'views/shop_details.xml',
+        'views/test.xml',
     ],
     'assets': {
         'web.assets_frontend': [
