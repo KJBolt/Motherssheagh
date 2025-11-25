@@ -18,7 +18,7 @@
                     <ol class="breadcrumb" style="background: transparent; padding: 0;">
                         <li class="breadcrumb-item"><a href="/" style="color: #666; text-decoration: none;">Home</a></li>
                         <li class="breadcrumb-item"><a href="/shop_new" style="color: #666; text-decoration: none;">Shop</a></li>
-                        <li class="breadcrumb-item active" style="color: #000;">Whipped Shea Body Butter</li>
+                        <li class="breadcrumb-item active" style="color: #000;"><t t-esc="product.name"/></li>
                     </ol>
                 </nav>
 
