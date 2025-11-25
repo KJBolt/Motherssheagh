@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="remove_cart_icon_css" inherit_id="website.layout">
+        <xpath expr="//head" position="inside">
+            <style>
+                a[href='/shop/cart'] {
+                    display: none !important;
+                }
+            </style>
+        </xpath>
+    </template>
+</odoo>

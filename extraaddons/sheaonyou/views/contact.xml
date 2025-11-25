@@ -2,6 +2,7 @@
 <odoo>
     <template id="contact" name="Contact">
         <t t-call="website.layout">
+            <t t-set="title">Contact</t>
             <t t-set="head">
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
@@ -10,6 +11,13 @@
                     body, h1, h2, h3, h4, h5, h6, p, a, button, .btn {
                         font-family: 'Droid Sans', sans-serif !important;
                     }
+                    <!-- .fa-shopping-cart{
+                        display: none;
+                    }
+
+                    .o_wsale_my_cart{
+                        display: none;
+                    } -->
                 </style>
             </t>
 

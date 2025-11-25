@@ -17,7 +17,7 @@ class CartController(http.Controller):
         order = request.website.sale_get_order(force_create=True)
         
         # Get product template
-        product_template = request.env['product.template'].browse(int(product_id))
+        product_template = request.env['product.template'].sudo().browse(int(product_id))
         
         if product_template.exists():
             # Get the product variant (product.product)

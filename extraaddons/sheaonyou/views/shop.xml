@@ -2,6 +2,7 @@
 <odoo>
     <template id="shop" name="Shop">
         <t t-call="website.layout">
+            <t t-set="title">Shop</t>
             <t t-set="head">
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
@@ -15,6 +16,14 @@
                             font-size: 3rem !important;
                         }
                     }
+
+                    <!-- .fa-shopping-cart{
+                        display: none;
+                    }
+
+                    .o_wsale_my_cart{
+                        display: none;
+                    } -->
                 </style>
             </t>
             <!-- Hero Section -->
